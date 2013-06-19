@@ -3,7 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require
-require "spud_photos"
+require "tb_photos"
 
 module Dummy
   class Application < Rails::Application

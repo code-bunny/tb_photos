@@ -1,10 +1,10 @@
-require 'spud_core'
+require 'tb_core'
 require 'paperclip'
 
 module Spud
   module Photos
     class Engine < Rails::Engine
-      engine_name :spud_photos
+      engine_name :tb_photos
       initializer :assets_photos do |config| 
         Rails.application.config.assets.precompile += ["spud/admin/photos*"]
       end
