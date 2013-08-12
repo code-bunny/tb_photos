@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Spud::Photos::VERSION
   s.authors     = ["Greg Woods"]
   s.email       = ["greg@westlakedesign.com"]
-  s.homepage    = "http://www.github.com/gregawoods/spud_photos"
+  s.homepage    = "http://bitbucket.org/westlakedesign/tb_photos"
   s.summary     = "Twice Baked Engine"
   s.description = "Twice Baked is a feature complete photo management/gallery for the spud engine. Manage multiple galleries, albums, and photos. Use HTML 5 to drag and drop many images at once."
 
