@@ -9,7 +9,8 @@ class SpudPhoto < ActiveRecord::Base
 
   has_attached_file :photo, 
     :styles => lambda { |attachment| attachment.instance.dynamic_styles },
-    :convert_options => Spud::Photos.config.convert_options,
+    :convert_options => Spud::Photos.convert_options,
+    :source_file_options => Spud::Photos.source_file_options,
     :storage => Spud::Photos.paperclip_storage,
     :s3_credentials => Spud::Photos.s3_credentials,
     :url => Spud::Photos.storage_url,
@@ -18,10 +19,9 @@ class SpudPhoto < ActiveRecord::Base
   validates_attachment_presence :photo
 
   def dynamic_styles
-    compress = '-strip -density 72x72'
     admin_styles = {
-      :spud_admin_small => {:geometry => '125x125#', :convert_options => compress},
-      :spud_admin_medium => {:geometry => '300x200', :convert_options => compress}
+      :spud_admin_small => {:geometry => '125x125#', :format => :jpg, :source_file_options => '-density 72', :convert_options => '-strip -quality 85'},
+      :spud_admin_medium => {:geometry => '300x200', :format => :jpg, :source_file_options => '-density 72', :convert_options => '-strip -quality 85'}
     }
     return admin_styles.merge(Spud::Photos.config.photo_styles)
   end
