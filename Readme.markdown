@@ -30,11 +30,14 @@ Spud Photos accepts the following configuration options:
 	    :large => '400x400#',
 	    :huge => '600x600'
 	  }
+	  config.max_image_upload_size = 2.megabytes
 	  config.paperclip_storage = :filesystem #use :s3 to use s3 storage (aws gem required)
     	  config.s3_credentials = "#{Rails.root}/config/s3.yml"
     	  config.storage_path = ":rails_root/public/system/spud_photos/:id/:style/:basename.:extension"
     	  config.storage_url = "/system/spud_photos/:id/:style/:basename.:extension"
 	end
+
+The `max_image_upload_size` should match with the apache/httpd max upload size for the public directory. Set the config to 0 for no size limit.
 
 The `photo_styles` option will be passed to [Paperclip][2], so any valid paperclip styles can be added here.
 
