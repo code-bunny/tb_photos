@@ -1,5 +1,5 @@
 <% if @photo.errors.any? %>
-  Spud.Admin.Photos.photoLegacyUploadErrors("<%= escape_javascript(render 'form') %>");
+  spud.admin.photos.photoLegacyUploadErrors("<%= escape_javascript(render 'form') %>");
 <% else %>
-  Spud.Admin.Photos.photoLegacyUploadComplete(<%= @photo.id %>, "<%= escape_javascript(render :partial => 'photo', :locals => {:photo => @photo}) %>");
+  spud.admin.photos.photoLegacyUploadComplete(<%= @photo.id %>, "<%= escape_javascript(render :partial => 'photo', :locals => {:photo => @photo}) %>");
 <% end %>

@@ -1,8 +1,6 @@
 <%= content_for :head do %>
-  <%= javascript_include_tag "spud/admin/photos" %>
-  <%= stylesheet_link_tag 'spud/admin/photos' %>
   <script type="text/javascript">
-    $(document).ready(Spud.Admin.Photos.init);
+    $(document).ready(spud.admin.photos.init);
   </script>
 <% end %>
 <%= render :template => 'layouts/spud/admin/detail' %>

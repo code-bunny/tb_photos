@@ -19,7 +19,7 @@
   </fieldset>
 
   <fieldset>
-    <legend>File Upload</legend>
+    <legend id="fileUploadSizeLegend">File Upload</span></legend>
       <div class="control-group">
         <%= f.label :photo, :class => "control-label" %>
         <div class="controls">
@@ -39,3 +39,8 @@
   <iframe id="spud_admin_photo_form_target" name="spud_admin_photo_form_target" style="display:none;"></iframe>
 
 <% end %>
+<script type="text/javascript">
+  spud.admin.photos.max_image_upload_size_humanized = spud.admin.photos.getFileSizeHumanized(<%= Spud::Photos.max_image_upload_size %>);
+  spud.admin.photos.max_image_upload_size_bytes = <%= Spud::Photos.max_image_upload_size %>;
+  $("#fileUploadSizeLegend").html('File Upload <span class="split-pane-item-meta">max allowed size : '+ spud.admin.photos.max_image_upload_size_humanized +'</span>');
+</script>
