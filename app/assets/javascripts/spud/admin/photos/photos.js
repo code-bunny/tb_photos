@@ -58,7 +58,7 @@ spud.admin.photos = new function(){
     if(file) {
       var allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/bmp"];
       if(allowedTypes.indexOf(file.type) < 0) {
-        errors.push("unsupported file format");
+        errors.push("Unsupported file format");
       }
       var maxAllowedSize = spud.admin.photos.max_image_upload_size_bytes;
       if(maxAllowedSize && file.size > maxAllowedSize) {
@@ -66,7 +66,7 @@ spud.admin.photos = new function(){
       }
     }
     else {
-      errors.push("no file found");
+      errors.push("No file found");
     }
     return errors;
   };
@@ -269,6 +269,7 @@ spud.admin.photos = new function(){
       title: 'Upload Photo',
       html: html
     });
+    $("#fileUploadSizeLegend").html('File Upload <span class="split-pane-item-meta">max allowed size : '+ spud.admin.photos.max_image_upload_size_humanized +'</span>');
   };
 
   /*

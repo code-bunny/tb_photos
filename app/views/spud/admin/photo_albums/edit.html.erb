@@ -1,5 +1,1 @@
 <%= render :partial => 'form', :locals => {:path => spud_admin_photo_album_path(@photo_album)} %>
-<script type="text/javascript">
-  spud.admin.photos.max_image_upload_size_humanized = spud.admin.photos.getFileSizeHumanized(<%= Spud::Photos.max_image_upload_size %>);
-  spud.admin.photos.max_image_upload_size_bytes = <%= Spud::Photos.max_image_upload_size %>;
-</script>
