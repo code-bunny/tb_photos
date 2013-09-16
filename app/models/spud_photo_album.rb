@@ -19,7 +19,7 @@ class SpudPhotoAlbum < ActiveRecord::Base
   after_save :update_photo_order
 
   def top_photo_url(style)
-    unless photos.empty?
+    if photos.length > 0
       return photos.first.photo.url(style)
     end
   end

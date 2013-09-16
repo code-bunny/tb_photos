@@ -9,7 +9,7 @@
 <h2>Photo Album: <%= @photo_album.title %></h2>
 
 <% if @photo_gallery %>
-  <% if @photo_gallery.albums.count == 1 %>
+  <% if @photo_gallery.albums.length == 1 %>
     <p><%= link_to 'Back to Galleries', photo_galleries_path %>
   <% else %>
     <p><%= link_to 'Back to Gallery', photo_gallery_photo_albums_path(@photo_gallery.url_name) %>
