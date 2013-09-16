@@ -23,14 +23,9 @@ class PhotoAlbumsController < ApplicationController
   end
 
   def show
-    @photo_album = SpudPhotoAlbum.find_by_url_name(params[:id])
+    @photo_album = SpudPhotoAlbum.where(:url_name => params[:id]).first
     if @photo_album.blank?
-      flash[:error] = "Could not find the requested Photo Album"
-      if params[:photo_gallery_id]
-        redirect_to photo_gallery_photo_albums_path(params[:photo_gallery_id])
-      else
-        redirect_to photo_albums_path
-      end
+      raise Spud::NotFoundError.new(:item => 'photo album')
     else
       respond_with @photo_album
     end
@@ -39,15 +34,9 @@ class PhotoAlbumsController < ApplicationController
 private
 
   def get_gallery
-    @photo_gallery = SpudPhotoGallery.find_by_url_name(params[:photo_gallery_id])
+    @photo_gallery = SpudPhotoGallery.where(:url_name => params[:photo_gallery_id]).first
     if @photo_gallery.blank?
-      flash[:error] = "Could not find the requested Photo Gallery"
-      if request.xhr?
-        render :nothing => true, :status => 404
-      else
-        redirect_to photo_galleries_path
-      end
-      return false
+      raise Spud::NotFoundError.new(:item => 'photo gallery')
     end
   end
 
