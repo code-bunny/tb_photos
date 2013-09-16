@@ -56,7 +56,7 @@ spud.admin.photos = new function(){
     var errors = [];
 
     if(file) {
-      var allowedTypes = ["image/jpeg"];
+      var allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/bmp"];
       if(allowedTypes.indexOf(file.type) < 0) {
         errors.push("unsupported file format");
       }
@@ -135,7 +135,7 @@ spud.admin.photos = new function(){
     if(totalErrors == 1) {
       errorMsg = "1 error prohibited you from saving:";
     }
-    if(opts.showAsDialog) {
+    if(opts && opts.showAsDialog) {
       alert(errorMsg + '\n\t' + errors.join('\n\t'));
       return false;
     }
