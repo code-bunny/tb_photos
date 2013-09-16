@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
-  namespace :spud do
-    namespace :admin do
-      resources :photos do
-        get 'library', :on => :collection
-        post 'mass_destroy', :on => :collection
-      end
-      resources :photo_albums
-      resources :photo_galleries
+  namespace :admin do
+    resources :photos do
+      get 'library', :on => :collection
+      post 'mass_destroy', :on => :collection
     end
+    resources :photo_albums
+    resources :photo_galleries
   end
 
   scope Spud::Photos.config.base_path do

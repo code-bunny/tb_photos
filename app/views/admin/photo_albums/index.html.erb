@@ -1,0 +1,9 @@
+<%= content_for :data_controls do %>
+  <%= link_to "New Photo Album", new_admin_photo_album_path, :class => "btn btn-primary", :title => "New Photo Album" %>
+<% end %>
+
+<%= content_for :detail do %>
+  <div id="spud_admin_photo_galleries" class="spud_admin_photo_ui_thumbs">
+    <%= render :partial => 'album', :collection => @photo_albums %>
+  <div>
+<% end %>

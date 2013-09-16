@@ -6,15 +6,15 @@ module Spud
     class Engine < Rails::Engine
       engine_name :tb_photos
       initializer :assets_photos do |config| 
-        Rails.application.config.assets.precompile += ["spud/admin/photos/application*"]
-        Spud::Core.append_admin_javascripts("spud/admin/photos/application")
-        Spud::Core.append_admin_stylesheets("spud/admin/photos/application")
+        Rails.application.config.assets.precompile += ["admin/photos/application*"]
+        Spud::Core.append_admin_javascripts("admin/photos/application")
+        Spud::Core.append_admin_stylesheets("admin/photos/application")
       end
       initializer :admin_photos do
         Spud::Core.config.admin_applications += [{
           :name => 'Photo Albums',
-          :thumbnail => 'spud/photos/photo_albums_thumb.png',
-          :url => '/spud/admin/photo_albums',
+          :thumbnail => 'admin/photos/photo_albums_thumb.png',
+          :url => '/admin/photo_albums',
           :retina => true,
           :order => 82
         # },{
@@ -27,8 +27,8 @@ module Spud
         if Spud::Photos.config.galleries_enabled
           Spud::Core.config.admin_applications += [{
             :name => 'Photo Galleries',
-            :thumbnail => 'spud/photos/photo_albums_thumb.png',
-            :url => '/spud/admin/photo_galleries',
+            :thumbnail => 'admin/photos/photo_albums_thumb.png',
+            :url => '/admin/photo_galleries',
             :retina => true,
             :order => 81
           }]
