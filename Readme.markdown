@@ -1,12 +1,12 @@
-# Spud Photos
+# Twice Baked Photos
 
-Spud Photos is an engine for creating and managing photo galleries, designed for use with [Spud][1].
+TB Photos is an engine for creating and managing photo galleries, designed for use with [Twice Baked][1].
 
 ## Installation/Usage
 
 1. In your Gemfile add the following
 
-		gem 'spud_photos'
+		gem 'tb_photos'
 
 2. Run bundle install
 3. Copy in database migrations to your new rails project
@@ -14,11 +14,11 @@ Spud Photos is an engine for creating and managing photo galleries, designed for
 		bundle exec rake railties:install:migrations
 		rake db:migrate
 
-4. Run a rails server instance and point your browser to /spud/admin
+4. Run a rails server instance and point your browser to `/admin`
 
 ## Configuration
 
-Spud Photos accepts the following configuration options:
+TB Photos accepts the following configuration options:
 
 	Spud::Photos.configure do |config|
 	  config.base_layout = 'application'
@@ -51,16 +51,12 @@ A number of built-in views have been provided to help you get started with the f
 
 	rails generate spud:photos:views
 
-__NOTE:__ The built-in views are likely to undergo changes as features are added to the photos engine. If a new version of Spud Photos does not play nicely with your customized views, try backing up your views to an alternate location and running the views generator again to see what has changed. 
-
-
-[1]:https://github.com/davydotcom/spud_core_admin
-[2]:https://github.com/thoughtbot/paperclip
+__NOTE:__ The built-in views are likely to undergo changes as features are added to the photos engine. If a new version of TB Photos does not play nicely with your customized views, try backing up your views to an alternate location and running the views generator again to see what has changed. 
 
 Testing
 -----------------
 
-Spud uses RSpec for testing. Get the tests running with a few short commands:
+Twice Baked uses RSpec for testing. Get the tests running with a few short commands:
 
 1. Create and migrate the databases:
    
@@ -76,3 +72,7 @@ Spud uses RSpec for testing. Get the tests running with a few short commands:
         rspec spec
 
 After the tests have completed the current code coverage stats is available by opening ```/coverage/index.html``` in a browser.
+
+
+[1]:https://bitbucket.org/westlakedesign/tb_core
+[2]:https://github.com/thoughtbot/paperclip
