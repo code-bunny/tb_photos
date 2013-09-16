@@ -1,5 +1,7 @@
 class SpudPhoto < ActiveRecord::Base
 
+  extend ActionView::Helpers::NumberHelper
+
   attr_accessible :title, :caption, :photo
 
   has_many :spud_photo_albums_photos, :dependent => :destroy
@@ -16,7 +18,9 @@ class SpudPhoto < ActiveRecord::Base
     :url => Spud::Photos.storage_url,
     :path => Spud::Photos.storage_path
 
-  validates_attachment_presence :photo
+  validates_attachment :photo,
+    :presence => true,
+    :size => {:less_than => Spud::Photos.max_image_upload_size, :message => "size cannot exceed " + number_to_human_size(Spud::Photos.max_image_upload_size), :if => Proc.new{|p| Spud::Photos.max_image_upload_size > 0}}
 
   def dynamic_styles
     admin_styles = {

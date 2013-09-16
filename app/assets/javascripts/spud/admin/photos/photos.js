@@ -1,7 +1,5 @@
-Spud = (typeof(Spud) == 'undefined') ? {} : Spud;
-Spud.Admin = (typeof(Spud.Admin) == 'undefined') ? {} : Spud.Admin;
 
-Spud.Admin.Photos = new function(){
+spud.admin.photos = new function(){
 
   var self = this;
   var html5upload = false;
@@ -52,6 +50,25 @@ Spud.Admin.Photos = new function(){
       $(this).remove();
     });
     return false;
+  };
+
+  this.validatePhoto = function(file) {
+    var errors = [];
+
+    if(file) {
+      var allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/bmp"];
+      if(allowedTypes.indexOf(file.type) < 0) {
+        errors.push("Unsupported file format");
+      }
+      var maxAllowedSize = spud.admin.photos.max_image_upload_size_bytes;
+      if(maxAllowedSize && file.size > maxAllowedSize) {
+        errors.push("Your file size of " + self.getFileSizeHumanized(file.size) + " exceeded the maximum limit of " + spud.admin.photos.max_image_upload_size_humanized);
+      }
+    }
+    else {
+      errors.push("No file found");
+    }
+    return errors;
   };
 
   /* Handle file uploads passed via iframe (legacy support)
@@ -108,6 +125,38 @@ Spud.Admin.Photos = new function(){
   * Single-Photo Form Upload
   -------------------------------- */
 
+  this.generateFileUploadErrors = function(errors, opts) {
+
+    if(typeof errors == "string") {
+      errors = [errors];
+    }
+    var totalErrors = errors.length;
+    var errorMsg = totalErrors + " errors prohibited you from saving:";
+    if(totalErrors == 1) {
+      errorMsg = "1 error prohibited you from saving:";
+    }
+    if(opts && opts.showAsDialog) {
+      alert(errorMsg + '\n\t' + errors.join('\n\t'));
+      return false;
+    }
+
+    $(".spud_admin_form_error_list").remove();
+    $("#spud_admin_photo_form").find("[for=spud_photo_photo]").css("color","black");
+    $("#spud_admin_photo_form").before('<div class="spud_admin_form_error_list"><ul><h4>' + errorMsg +'</h4></ul></div>');
+    $("#spud_admin_photo_form").find("[for=spud_photo_photo]").css("color","red");
+    for(var i = 0; i < errors.length; i++) {
+      $(".spud_admin_form_error_list > ul").append("<li>"+ errors[i] + "</li>");
+    }
+    return false;
+  };
+
+  this.getFileSizeHumanized =function(bytes) {
+   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+   if (bytes == 0) return 'n/a';
+   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+   return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+ };
+
   this.submittedPhotoForm = function(e){
     // disable submit button
     // not working in updated bootstrap!
@@ -126,14 +175,14 @@ Spud.Admin.Photos = new function(){
       // progress bar to send events to
       var progressBar;
       var file = form.find('#spud_photo_photo')[0].files[0];
-      if(file){
-        progressBar = self.progressBarForUpload(file.name);
-        fd.append('spud_photo[photo]', file);
-        form.append(progressBar);
+      var photoValidationErrors = self.validatePhoto(file);
+      if(photoValidationErrors.length) {
+        return self.generateFileUploadErrors(photoValidationErrors);
       }
-      else{
-        progressBar = self.progressBarForUpload('');
-      }
+      
+      progressBar = self.progressBarForUpload(file.name);
+      fd.append('spud_photo[photo]', file);
+      form.append(progressBar);
 
       // send FormData object as ajax request
       var xhr = new XMLHttpRequest();
@@ -220,6 +269,7 @@ Spud.Admin.Photos = new function(){
       title: 'Upload Photo',
       html: html
     });
+    $("#fileUploadSizeLegend").html('File Upload <span class="split-pane-item-meta">max allowed size : '+ spud.admin.photos.max_image_upload_size_humanized +'</span>');
   };
 
   /*
@@ -305,7 +355,12 @@ Spud.Admin.Photos = new function(){
     var files = e.dataTransfer.files;
     var i = 0;
     while(i < files.length){
-      self.fileQueue.push(files[i]);
+      var file = files[i];
+      var photoValidationErrors = self.validatePhoto(file);
+      if(photoValidationErrors.length) {
+        return self.generateFileUploadErrors(photoValidationErrors, {showAsDialog: true});
+      }
+      self.fileQueue.push(file);
       i++;
     }
     self.updateQueueCountLabel();
