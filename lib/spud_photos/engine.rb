@@ -10,7 +10,7 @@ module Spud
         Spud::Core.append_admin_javascripts("admin/photos/application")
         Spud::Core.append_admin_stylesheets("admin/photos/application")
       end
-      initializer :admin_photos do
+      initializer :admin do
         Spud::Core.config.admin_applications += [{
           :name => 'Photo Albums',
           :thumbnail => 'admin/photos/photo_albums_thumb.png',
