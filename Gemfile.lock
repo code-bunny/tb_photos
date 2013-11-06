@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tb_photos (1.0.2)
+    tb_photos (1.0.3)
       paperclip
       rails (~> 3.2.2)
       tb_core (>= 1.0)
