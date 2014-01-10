@@ -23,6 +23,6 @@ module Spud
     self.storage_url = "/system/spud_photos/:id/:style/:basename.:extension"
     self.enable_full_page_caching = false
     self.page_caches_to_sweep = []
-    self.max_image_upload_size = 2.megabytes
+    self.max_image_upload_size = 5.megabytes
   end
 end

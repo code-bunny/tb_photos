@@ -1,12 +1,10 @@
 class SpudPhotoAlbum < ActiveRecord::Base
 
-  attr_accessible :title, :url_name, :photos, :photo_ids
-
   has_many :spud_photo_albums_photos, :dependent => :destroy
-  has_many :photos,
+  has_many :photos, 
+    ->{ order('spud_photo_albums_photos.sort_order asc') },
     :through => :spud_photo_albums_photos,
-    :source => :spud_photo,
-    :order => 'spud_photo_albums_photos.sort_order asc'
+    :source => :spud_photo
 
   has_many :spud_photo_galleries_albums
   has_many :galleries,

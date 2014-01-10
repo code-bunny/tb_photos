@@ -2,8 +2,6 @@ class SpudPhoto < ActiveRecord::Base
 
   extend ActionView::Helpers::NumberHelper
 
-  attr_accessible :title, :caption, :photo
-
   has_many :spud_photo_albums_photos, :dependent => :destroy
   has_many :albums,
     :through => :spud_photo_albums_photos,

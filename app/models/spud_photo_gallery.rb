@@ -1,7 +1,5 @@
 class SpudPhotoGallery < ActiveRecord::Base
 
-  attr_accessible :title, :url_name, :albums, :album_ids
-
   has_many :spud_photo_galleries_albums, :dependent => :destroy
   has_many :albums,
     :through => :spud_photo_galleries_albums,

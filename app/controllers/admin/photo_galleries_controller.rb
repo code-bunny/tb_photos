@@ -4,7 +4,6 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
   before_filter :get_albums, :only => [:new, :create, :edit, :update]
   add_breadcrumb 'Photo Galleries', :admin_photo_galleries_path
   layout 'admin/spud_photos'
-  cache_sweeper :spud_photo_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @photo_galleries = SpudPhotoGallery.all
@@ -21,7 +20,7 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
   end
   
   def create
-    @photo_gallery = SpudPhotoGallery.new(params[:spud_photo_gallery])
+    @photo_gallery = SpudPhotoGallery.new(photo_gallery_params)
     flash[:notice] = 'SpudPhotoGallery created successfully' if @photo_gallery.save
     respond_with @photo_gallery, :location => admin_photo_galleries_path
   end
@@ -31,7 +30,7 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
   end
   
   def update
-    @photo_gallery.update_attributes(params[:spud_photo_gallery])
+    @photo_gallery.update_attributes(photo_gallery_params)
     flash[:notice] = 'SpudPhotoGallery updated successfully' if @photo_gallery.save
     respond_with @photo_gallery, :location => admin_photo_galleries_path
   end
@@ -41,12 +40,18 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
     respond_with @photo_gallery, :location => admin_photo_galleries_path
   end
 
+private
+
   def get_gallery
     @photo_gallery = SpudPhotoGallery.find(params[:id])
   end
 
   def get_albums
     @photo_albums = SpudPhotoAlbum.all
+  end
+
+  def photo_gallery_params
+    params.require(:spud_photo_gallery).permit(:title, :url_name, :album_ids => [])
   end
 
 end

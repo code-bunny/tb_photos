@@ -3,6 +3,10 @@ source "http://rubygems.org"
 # Declare your gem's dependencies in spud_photos.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
+
+gem 'authlogic', :github => 'binarylogic/authlogic', :ref => 'abc09970ed1fad98c6c12f4ca64d1670d37d11db'
+gem 'tb_core', :path => "../tb_core"
+
 gemspec
 
 # jquery-rails is used by the dummy application

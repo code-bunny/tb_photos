@@ -391,6 +391,9 @@
     var fd = new FormData();
     fd.append('spud_photo[photo]', file);
 
+    var csrf = $('meta[name=csrf-token]').prop('content');
+    fd.append('authenticity_token', csrf);
+
     // create a progress bar
     var progressBar = self.progressBarForUpload(file.name);
     $('#spud_admin_photo_upload_queue_bars').prepend(progressBar);

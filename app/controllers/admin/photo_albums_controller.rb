@@ -3,7 +3,6 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
   before_filter :get_album, :only => [:show, :edit, :update, :destroy, :library]
   add_breadcrumb 'Photo Albums', :admin_photo_albums_path
   layout 'admin/spud_photos'
-  cache_sweeper :spud_photo_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @photo_albums = SpudPhotoAlbum.all
@@ -20,7 +19,7 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
   end
 
   def create
-    @photo_album = SpudPhotoAlbum.new(params[:spud_photo_album])
+    @photo_album = SpudPhotoAlbum.new(photo_album_params)
     if @photo_album.save
       set_photo_order
     end
@@ -32,7 +31,7 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
   end
 
   def update
-    @photo_album.update_attributes(params[:spud_photo_album])
+    @photo_album.update_attributes(photo_album_params)
     if @photo_album.save
       set_photo_order
       flash[:notice] = 'SpudPhotoAlbum updated successfully' 
@@ -49,15 +48,19 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
     @photo_album = SpudPhotoAlbum.find(params[:id])
   end
 
-  private
+private
 
   def set_photo_order
     order_ids = params[:spud_photo_album][:photo_ids] || []
     @photo_album.spud_photo_albums_photos.each do |obj|
-      logger.debug "##### ID: #{obj.spud_photo_id.to_s}"
+      #logger.debug "##### ID: #{obj.spud_photo_id.to_s}"
       index = order_ids.index(obj.spud_photo_id.to_s)
       obj.update_attribute(:sort_order, index)
     end
+  end
+
+  def photo_album_params
+    params.require(:spud_photo_album).permit(:title, :url_name, :photo_ids => [])
   end
 
 end

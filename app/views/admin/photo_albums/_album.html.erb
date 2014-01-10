@@ -5,6 +5,6 @@
   </div>
   <div class="spud_admin_photo_ui_thumb_controls">
     <%= link_to 'Edit', edit_admin_photo_album_path(album), :class => 'spud_admin_photos_btn_edit' %>
-    <%= link_to 'Delete', admin_photo_album_path(album), :method => :delete, :class => 'spud_admin_photos_btn_delete', :remote => true, :confirm => 'Are you sure?' %>
+    <%= link_to 'Delete', admin_photo_album_path(album), :method => :delete, :class => 'spud_admin_photos_btn_delete', :remote => true, :data => {:confirm => 'Are you sure?'} %>
   </div>
 </div>

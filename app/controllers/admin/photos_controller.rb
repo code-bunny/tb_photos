@@ -4,7 +4,6 @@ class Admin::PhotosController < Admin::ApplicationController
 
   before_filter :get_photo, :only => [:show, :edit, :update, :destroy]
   layout false
-  cache_sweeper :spud_photo_sweeper, :only => [:create, :update, :destroy]
 
   def index
     @photos = SpudPhoto.all
@@ -23,7 +22,7 @@ class Admin::PhotosController < Admin::ApplicationController
   end
 
   def create
-    @photo = SpudPhoto.new(params[:spud_photo])
+    @photo = SpudPhoto.new(photo_params)
     if @photo.save
       success = true
       flash[:notice] = 'SpudPhoto created successfully' 
@@ -44,7 +43,7 @@ class Admin::PhotosController < Admin::ApplicationController
   end
   
   def update
-    @photo.update_attributes(params[:spud_photo])
+    @photo.update_attributes(photo_params)
     if @photo.save
       success = true
       flash[:notice] = 'SpudPhoto updated successfully' 
@@ -69,7 +68,7 @@ class Admin::PhotosController < Admin::ApplicationController
     respond_with @photos, :location => admin_photos_path
   end
 
-  private
+private
 
   def get_photo
     @photo = SpudPhoto.find(params[:id])
@@ -87,6 +86,10 @@ class Admin::PhotosController < Admin::ApplicationController
         :html => render_to_string(:partial => 'form', :layout => nil)
       }}
     end
+  end
+
+  def photo_params
+    params.require(:spud_photo).permit(:title, :caption, :photo)
   end
 
 end

@@ -7,12 +7,6 @@ class PhotoAlbumsController < ApplicationController
     before_filter :get_gallery
   end
 
-  after_filter :only => [:show, :index] do |c|
-    if Spud::Photos.enable_full_page_caching
-      c.cache_page(nil, nil, false)
-    end
-  end
-
   def index
     if @photo_gallery
       @photo_albums = @photo_gallery.albums.order('created_at desc')
