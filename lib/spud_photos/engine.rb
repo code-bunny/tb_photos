@@ -6,7 +6,6 @@ module Spud
     class Engine < Rails::Engine
       engine_name :tb_photos
       initializer :assets_photos do |config| 
-        Rails.application.config.assets.precompile += ["admin/photos/application*"]
         Spud::Core.append_admin_javascripts("admin/photos/application")
         Spud::Core.append_admin_stylesheets("admin/photos/application")
       end
