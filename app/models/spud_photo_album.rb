@@ -30,7 +30,7 @@ class SpudPhotoAlbum < ActiveRecord::Base
     end
   end
 
-  private
+private
 
   def set_url_name
     self.url_name = self.title.parameterize

@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  Photo Galleries | <%= Spud::Core.site_name %>
-<% end %>
+<% @page_title = 'Photo Galleries' %>
 
 <% content_for :head do %>
   
@@ -8,11 +6,15 @@
 
 <h2>Photo Galleries</h2>
 
-<div id="spud_photo_galleries">
-  <% @photo_galleries.each do |gallery| %>
-    <div class="spud_photo_gallery_thumbnail">
-      <h3><%= link_to gallery.title, photo_gallery_photo_albums_path(gallery.url_name) %></h3>
-      <%= image_tag gallery.top_photo_url(:medium), :title => gallery.title %>
-    </div>
-  <% end %>
-</div>
+<% cache(@photo_galleries) do %>
+  <div id="spud_photo_galleries">
+    <% @photo_galleries.each do |gallery| %>
+      <% cache(gallery) do %>
+        <div class="spud_photo_gallery_thumbnail">
+          <h3><%= link_to gallery.title, photo_gallery_photo_albums_path(gallery.url_name) %></h3>
+          <%= image_tag gallery.top_photo_url(:medium), :title => gallery.title %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

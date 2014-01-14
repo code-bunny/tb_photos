@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= @photo_album.title %> | <%= Spud::Core.site_name %>
-<% end %>
+<% @page_title = @photo_album.title %>
 
 <% content_for :head do %>
 
@@ -8,20 +6,18 @@
 
 <h2>Photo Album: <%= @photo_album.title %></h2>
 
-<% if @photo_gallery %>
-  <% if @photo_gallery.albums.length == 1 %>
-    <p><%= link_to 'Back to Galleries', photo_galleries_path %>
+<% cache(@photo_album) do %>
+  <% if @photo_gallery %>
+    <p><%= link_to 'Back to Albums', photo_gallery_photo_albums_path(@photo_gallery.url_name) %>
   <% else %>
-    <p><%= link_to 'Back to Gallery', photo_gallery_photo_albums_path(@photo_gallery.url_name) %>
+    <p><%= link_to 'Back to Albums', photo_albums_path %>
   <% end %>
-<% else %>
-  <p><%= link_to 'Back to Albums', photo_albums_path %>
-<% end %>
 
-<div id="spud_photo_galleries">
-  <% @photo_album.photos.each do |photo| %>
-    <div class="spud_photo_album_thumbnail">
-      <%= link_to image_tag(photo.photo.url(:small), :alt => photo.caption, :title => photo.title), photo.photo.url(:large) %>
-    </div>
-  <% end %>
-</div>
+  <div id="spud_photo_galleries">
+    <% @photo_album.photos.each do |photo| %>
+      <div class="spud_photo_album_thumbnail">
+        <%= link_to image_tag(photo.photo.url(:small), :alt => photo.caption, :title => photo.title), photo.photo.url(:large) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

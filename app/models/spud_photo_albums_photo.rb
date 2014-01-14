@@ -1,4 +1,4 @@
 class SpudPhotoAlbumsPhoto < ActiveRecord::Base
   belongs_to :spud_photo
-  belongs_to :spud_photo_album
+  belongs_to :spud_photo_album, :touch => true
 end
