@@ -1,1 +1,1 @@
-rvm use 2.0@twice_baked --create
+rvm use 2.1@twice_baked --create

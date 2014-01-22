@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Twice Baked is a feature complete photo management/gallery for the spud engine. Manage multiple galleries, albums, and photos. Use HTML 5 to drag and drop many images at once."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.markdown"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir.glob('spec/**/*').reject{ |f| f.match(/^spec\/dummy\/(log|tmp)/) }
 
   s.add_dependency "rails", "~> 4.0"
   s.add_dependency 'tb_core', "~> 1.2"

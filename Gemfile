@@ -5,7 +5,7 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 
 gem 'authlogic', :github => 'binarylogic/authlogic', :ref => 'abc09970ed1fad98c6c12f4ca64d1670d37d11db'
-gem 'tb_core', :path => "../tb_core"
+gem 'tb_core' #, :path => "../tb_core"
 
 gemspec
 
