@@ -18,6 +18,7 @@ class SpudPhoto < ActiveRecord::Base
 
   validates_attachment :photo,
     :presence => true,
+    :content_type => {:content_type => ['image/jpg', 'image/jpeg', 'image/png']},
     :size => {:less_than => Spud::Photos.max_image_upload_size, :message => "size cannot exceed " + number_to_human_size(Spud::Photos.max_image_upload_size), :if => Proc.new{|p| Spud::Photos.max_image_upload_size > 0}}
 
   def dynamic_styles
