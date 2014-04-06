@@ -255,6 +255,12 @@
     progressBar.find('.progress').addClass('progress-danger');
   };
 
+  self.onPhotoUploadFailure = function(e, progressBar){
+    if(typeof(console) == 'object'){
+      console.error('An unexpected error occurred during upload', e);
+    }
+  };
+
   /*
   * Photo Upload/Edit Form
   ------------------------------- */
