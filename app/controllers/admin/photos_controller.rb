@@ -22,7 +22,17 @@ class Admin::PhotosController < Admin::ApplicationController
   end
 
   def create
-    @photo = SpudPhoto.new(photo_params)
+    photo_file = photo_params[:photo]
+    if photo_file.present?
+      fingerprint = Digest::MD5.hexdigest(photo_file.read)
+      photo_file.rewind
+      @photo = SpudPhoto.where(:photo_fingerprint => fingerprint).first
+    end
+    
+    if @photo.blank?
+      @photo = SpudPhoto.new(photo_params)
+    end
+
     if @photo.save
       success = true
       flash[:notice] = 'SpudPhoto created successfully' 
