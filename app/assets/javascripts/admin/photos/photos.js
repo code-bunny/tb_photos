@@ -342,6 +342,9 @@ var deleteSelectedPhotosFromLibrary = function(e){
       $('.admin-photo-ui-thumb-selected').fadeOut(200, function(){
         $(this).remove();
       });
+      for(var i=0; i<ids.length; i++){
+        spud.admin.photos.markPhotoAsDeleted(ids[i]);
+      }
     },
     error: function(jqXHR, textStatus, errorThrown){
       console.log('An error occurred:');
