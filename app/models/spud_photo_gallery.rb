@@ -9,6 +9,8 @@ class SpudPhotoGallery < ActiveRecord::Base
   validates_uniqueness_of :title, :url_name
   before_validation :set_url_name
 
+  scope :ordered, ->{ order('created_at desc') }
+
   def top_photo_url(style)
     unless albums.empty?
       return albums.first.top_photo_url(style)

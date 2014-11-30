@@ -4,7 +4,7 @@ class PhotoGalleriesController < ApplicationController
   layout Spud::Photos.base_layout
 
   def index
-    @photo_galleries = SpudPhotoGallery.order('created_at desc')
+    @photo_galleries = SpudPhotoGallery.ordered
     respond_with @photo_galleries
   end
 

@@ -16,6 +16,8 @@ class SpudPhotoAlbum < ActiveRecord::Base
   before_validation :set_url_name
   after_save :update_photo_order
 
+  scope :ordered, ->{ order('created_at desc') }
+
   def top_photo_url(style)
     if photos.length > 0
       return photos.first.photo.url(style)

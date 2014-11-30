@@ -9,15 +9,15 @@ class PhotoAlbumsController < ApplicationController
 
   def index
     if @photo_gallery
-      @photo_albums = @photo_gallery.albums.order('created_at desc')
+      @photo_albums = @photo_gallery.albums.ordered
     else
-      @photo_albums = SpudPhotoAlbum.order('created_at desc')
+      @photo_albums = SpudPhotoAlbum.ordered
     end
     respond_with @photo_albums
   end
 
   def show
-    @photo_album = SpudPhotoAlbum.where(:url_name => params[:id]).first
+    @photo_album = SpudPhotoAlbum.find_by(:url_name => params[:id])
     if @photo_album.blank?
       raise Spud::NotFoundError.new(:item => 'photo album')
     else
@@ -28,7 +28,7 @@ class PhotoAlbumsController < ApplicationController
 private
 
   def get_gallery
-    @photo_gallery = SpudPhotoGallery.where(:url_name => params[:photo_gallery_id]).first
+    @photo_gallery = SpudPhotoGallery.find_by(:url_name => params[:photo_gallery_id])
     if @photo_gallery.blank?
       raise Spud::NotFoundError.new(:item => 'photo gallery')
     end
