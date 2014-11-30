@@ -1,4 +1,4 @@
-<%= form_for @photo_album, :url => path, :builder => TbCore::FormBuilder, :html => {:class => 'form-horizontal', :id => 'spud_admin_photo_album_form'} do |f| %> 
+<%= form_for @photo_album, :url => path, :builder => TbCore::FormBuilder, :html => {:class => 'form-horizontal', :id => 'admin-photo-album-form'} do |f| %> 
   
   <%= tb_form_errors(f.object) %>
 
@@ -12,23 +12,23 @@
 
     <div class="row">
       <div class="col-md-12 admin-photo-album-column">
-        <%= link_to "Photo Library", admin_photos_path, :class => "btn btn-sm btn-primary", :id => 'spud_admin_photo_album_action_library' %>
-        <%= link_to "Upload Photo", new_admin_photo_path, :class => "btn btn-sm btn-success", :id => 'spud_admin_photo_album_action_upload' %>
+        <%= link_to "Photo Library", admin_photos_path, :class => "btn btn-sm btn-primary", :id => 'admin-photo-album-action-library' %>
+        <%= link_to "Upload Photo", new_admin_photo_path, :class => "btn btn-sm btn-success", :id => 'admin-photo-album-action-upload' %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-8 admin-photo-album-column">
-        <div id="spud_admin_photos_selected" class="control-group spud_admin_photo_ui_thumbs spud_admin_photo_ui_thumbs_sortable">
+        <div id="admin-photos-selected" class="control-group admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
           <%= render :partial => '/admin/photos/photo', :collection => @photo_album.photos %>
         </div>
       </div>
 
       <div class="col-md-4 admin-photo-album-column">
-        <div id="spud_admin_photo_upload_queue">
+        <div id="admin-photo-upload-queue">
           <p>Drag and drop photos here to upload</p>
-          <h5 id="spud_admin_photo_upload_queue_label">Queued Uploads: <span>0</span></h5>
-          <div id="spud_admin_photo_upload_queue_bars"></div>
+          <h5 id="admin-photo-upload-queue_label">Queued Uploads: <span>0</span></h5>
+          <div id="admin-photo-upload-queue_bars"></div>
         </div>
       </div>
 

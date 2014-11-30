@@ -4,13 +4,13 @@ $editor-height: 450px;
 
 // Thumbnails
 //////////////
-.spud_admin_photo_ui_thumbs{
+.admin-photo-ui-thumbs{
   height: $editor-height;
   padding: 0;
   border: 1px solid #EAEAEA;
   overflow-y: scroll;
 }
-.spud_admin_photo_ui_thumb{
+.admin-photo-ui-thumb{
   width: 125px;
   height: 125px;
   float: left;
@@ -30,32 +30,32 @@ $editor-height: 450px;
   -webkit-transition-duration: 0.2s;
   -webkit-transition-timing-function: ease-out;
 }
-.spud_admin_photo_ui_thumb_small{
+.admin-photo-ui-thumb-small{
   width: 94px;
   height: 94px;
   background-size: 94px 94px;
   margin: 12px;
 }
-.spud_admin_photo_ui_thumb:hover{
+.admin-photo-ui-thumb:hover{
   box-shadow: 0 0 5px black;
 }
-.spud_admin_photo_ui_thumbs_selectable .spud_admin_photo_ui_thumb{
+.admin-photo-ui-thumbs-selectable .admin-photo-ui-thumb{
   cursor: pointer;
 }
-.spud_admin_photo_ui_thumbs_selectable .spud_admin_photo_ui_thumb_controls{
+.admin-photo-ui-thumbs-selectable .admin-photo-ui-thumb-controls{
   display: none;
 }
-.spud_admin_photo_ui_thumb_selected{
+.admin-photo-ui-thumb-selected{
   border: 3px solid #006CCC;
   margin: 13px;
 }
-.spud_admin_photo_ui_thumb_small.spud_admin_photo_ui_thumb_selected{
+.admin-photo-ui-thumb-small.admin-photo-ui-thumb-selected{
   margin: 9px;
 }
-.spud_admin_photo_ui_thumbs_sortable .spud_admin_photo_ui_thumb{
+.admin-photo-ui-thumbs-sortable .admin-photo-ui-thumb{
   cursor: move;
 }
-.spud_admin_photo_ui_thumb h5{
+.admin-photo-ui-thumb h5{
   font-size: 12px;
   color: white;
   text-align: center;
@@ -68,7 +68,7 @@ $editor-height: 450px;
   text-overflow: ellipsis;
   margin: 0;
 }
-.spud_admin_photo_ui_thumb_controls{
+.admin-photo-ui-thumb-controls{
   position: absolute;
   bottom: 0;
   right: 0;
@@ -77,7 +77,7 @@ $editor-height: 450px;
   background: rgba(0,0,0,0.5);
   border-bottom-right-radius: 15px;
 }
-.spud_admin_photos_btn_remove, .spud_admin_photos_btn_delete{
+.admin-photos-btn-remove, .admin-photos-btn-delete{
   background: image-url('admin/photos/buttons/x_16x16.png');
   height: 16px;
   width: 16px;
@@ -85,7 +85,7 @@ $editor-height: 450px;
   display: inline-block;
   margin: 0 4px;
 }
-.spud_admin_photos_btn_edit{
+.admin-photos-btn-edit{
   background: image-url('admin/photos/buttons/cog_16x16.png');
   height: 16px;
   width: 16px;
@@ -102,10 +102,10 @@ $editor-height: 450px;
 
 // Upload Queue
 //////////////
-.spud_admin_photo_progress{
+.admin-photo-progress{
   margin: 10px 0;
 }
-#spud_admin_photo_upload_queue{
+#admin-photo-upload-queue{
   display: none;
   background: white;
   padding: 15px;

@@ -1,13 +1,13 @@
 <%= content_tag :div, 
   :rel => photo.id,
-  :id => "spud_admin_photo_#{photo.id}", 
+  :id => "admin-photo-#{photo.id}", 
   :style => "background-image:url('#{photo.photo.url(:spud_admin_small)}')",
-  :class => "spud_admin_photo_ui_thumb spud_admin_photo_ui_thumb_small spud_admin_photo" do %>
+  :class => "admin-photo-ui-thumb admin-photo-ui-thumb-small admin-photo" do %>
   <div style="display:none;">
     <%= hidden_field_tag 'spud_photo_album[photo_ids][]', photo.id %>
   </div>
-  <div class="spud_admin_photo_ui_thumb_controls">
-    <%= link_to 'Edit', edit_admin_photo_path(photo), :class => 'spud_admin_photos_btn_edit' %>
-    <%= link_to 'Delete', '#', :class => 'spud_admin_photos_btn_remove' %>
+  <div class="admin-photo-ui-thumb-controls">
+    <%= link_to 'Edit', edit_admin_photo_path(photo), :class => 'admin-photos-btn-edit' %>
+    <%= link_to 'Delete', '#', :class => 'admin-photos-btn-remove' %>
   </div>
 <% end %>

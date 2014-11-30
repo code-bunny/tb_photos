@@ -1,4 +1,4 @@
-<%= form_for @photo_gallery, :url => path, :html => {:class => 'form-horizontal', :id => 'spud_admin_photo_gallery_form'} do |f| %> 
+<%= form_for @photo_gallery, :url => path, :html => {:class => 'form-horizontal', :id => 'admin-photo-gallery-form'} do |f| %> 
   
   <%= tb_form_errors(f.object) %>
   
@@ -17,15 +17,15 @@
 
   <fieldset>
     <legend>Select Albums</legend>
-    <div id="spud_admin_photo_albums_selected" class="spud_admin_photos_selection_left">
+    <div id="admin-photo-albums-selected" class="admin-photos-selection-left">
       <h4>Selected:</h4>
-      <div class="spud_admin_photo_ui_thumbs spud_admin_photo_ui_thumbs_sortable">
+      <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
         <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums %>
       </div>
     </div>
-    <div id="spud_admin_photo_albums_available" class="spud_admin_photos_selection_right">
+    <div id="admin-photo-albums-available" class="admin-photos-selection-right">
       <h4>Available:</h4>
-      <div class="spud_admin_photo_ui_thumbs spud_admin_photo_ui_thumbs_sortable">
+      <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
         <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums_available %>
       </div>
     </div>

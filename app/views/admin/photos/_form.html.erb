@@ -1,4 +1,4 @@
-<%= form_for @photo, :url => (@photo.new_record? ? admin_photos_path : admin_photo_path(@photo)), :builder => TbCore::FormBuilder, :html => {:id => 'spud_admin_photo_form', :target => 'spud_admin_photo_form_target', :class => 'form-horizontal'} do |f| %> 
+<%= form_for @photo, :url => (@photo.new_record? ? admin_photos_path : admin_photo_path(@photo)), :builder => TbCore::FormBuilder, :html => {:id => 'admin-photo-form', :target => 'admin-photo-form_target', :class => 'form-horizontal'} do |f| %> 
   
   <%= tb_form_errors(f.object) %>
   
@@ -19,6 +19,6 @@
       <% end %>
   </fieldset>
 
-  <iframe id="spud_admin_photo_form_target" name="spud_admin_photo_form_target" style="display:none;"></iframe>
+  <iframe id="admin-photo-form_target" name="admin-photo-form_target" style="display:none;"></iframe>
 
 <% end %>
