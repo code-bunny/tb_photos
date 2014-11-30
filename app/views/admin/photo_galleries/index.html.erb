@@ -8,8 +8,8 @@
       <div id="admin-photo-gallery-<%= gallery.id %>" class="admin-photo-ui-thumb" style="background-image:url('<%= gallery.top_photo_url(:spud_admin_small) %>')">
         <h5><%= gallery.title %></h5>
         <div class="admin-photo-ui-thumb-controls">
-          <%= link_to 'Edit', edit_admin_photo_gallery_path(gallery), :class => 'admin-photos-btn-edit' %>
-          <%= link_to 'Delete', admin_photo_gallery_path(gallery), :method => :delete, :class => 'admin-photos-btn-delete', :remote => true, :confirm => 'Are you sure?' %>
+          <%= link_to '', edit_admin_photo_gallery_path(gallery), :class => 'admin-photos-btn-edit' %>
+          <%= link_to '', admin_photo_gallery_path(gallery), :method => :delete, :class => 'admin-photos-btn-delete', :remote => true, :confirm => 'Are you sure?' %>
         </div>
       </div>
     <% end %>

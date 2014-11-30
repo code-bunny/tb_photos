@@ -4,6 +4,7 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
   before_filter :get_albums, :only => [:new, :create, :edit, :update]
   add_breadcrumb 'Photo Galleries', :admin_photo_galleries_path
   layout 'admin/spud_photos'
+  belongs_to_spud_app :photo_galleries
 
   def index
     @photo_galleries = SpudPhotoGallery.all

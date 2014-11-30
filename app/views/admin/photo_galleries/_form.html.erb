@@ -1,15 +1,10 @@
-<%= form_for @photo_gallery, :url => path, :html => {:class => 'form-horizontal', :id => 'admin-photo-gallery-form'} do |f| %> 
+<%= form_for @photo_gallery, :url => path, :builder => TbCore::FormBuilder, :html => {:class => 'form-horizontal', :id => 'admin-photo-gallery-form'} do |f| %> 
   
   <%= tb_form_errors(f.object) %>
   
   <fieldset>
     <legend>Gallery Info</legend>  
-      <div class="control-group">
-        <%= f.label :title, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :title %>
-        </div>
-      </div>
+      <%= f.tb_text_field :title %>
   </fieldset>
   
   <!-- if no albums are selected below, this ensures we send an empty album_ids array -->
@@ -17,23 +12,28 @@
 
   <fieldset>
     <legend>Select Albums</legend>
-    <div id="admin-photo-albums-selected" class="admin-photos-selection-left">
-      <h4>Selected:</h4>
-      <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
-        <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums %>
+
+    <div class="row">
+      <div class="col-md-8 admin-photo-album-column">
+        <h4>Selected:</h4>
+        <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
+          <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums %>
+        </div>
       </div>
-    </div>
-    <div id="admin-photo-albums-available" class="admin-photos-selection-right">
-      <h4>Available:</h4>
-      <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
-        <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums_available %>
+      <div class="col-md-4 admin-photo-album-column">
+        <h4>Available:</h4>
+        <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
+          <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums_available %>
+        </div>
       </div>
     </div>
   </fieldset>
 
-  <div class="form-actions">
-    <%= f.submit "Save Photo Gallery", :class=>"btn btn-primary form-btn", "data-loading-text" => "Saving..." %> 
-    or <%= link_to "cancel", request.referer, :class => "btn" %>
+  <div class="row">
+    <div class="col-md-12 admin-photo-album-column">
+      <%= f.submit "Save Photo Gallery", :class => "btn btn-primary" %> 
+      <%= link_to "Cancel", request.referer, :class => "btn btn-default" %>
+    </div>
   </div>
 
 <% end %>
