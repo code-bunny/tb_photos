@@ -1,6 +1,6 @@
 <%= form_for @photo_gallery, :url => path, :html => {:class => 'form-horizontal', :id => 'spud_admin_photo_gallery_form'} do |f| %> 
   
-  <%= error_messages_for(f.object) %>
+  <%= tb_form_errors(f.object) %>
   
   <fieldset>
     <legend>Gallery Info</legend>  

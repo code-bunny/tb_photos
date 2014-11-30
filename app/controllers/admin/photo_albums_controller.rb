@@ -3,6 +3,7 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
   before_filter :get_album, :only => [:show, :edit, :update, :destroy, :library]
   add_breadcrumb 'Photo Albums', :admin_photo_albums_path
   layout 'admin/spud_photos'
+  belongs_to_spud_app :photo_albums
 
   def index
     @photo_albums = SpudPhotoAlbum.all
@@ -53,7 +54,6 @@ private
   def set_photo_order
     order_ids = params[:spud_photo_album][:photo_ids] || []
     @photo_album.spud_photo_albums_photos.each do |obj|
-      #logger.debug "##### ID: #{obj.spud_photo_id.to_s}"
       index = order_ids.index(obj.spud_photo_id.to_s)
       obj.update_attribute(:sort_order, index)
     end

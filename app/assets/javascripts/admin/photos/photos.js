@@ -88,7 +88,7 @@
       var target = $('#spud_admin_photos_selected, #spud_admin_photos');
       target.prepend(html);
     }
-    hideModalDialog();
+    spud.admin.modal.hide();
   };
 
   self.selectedPhotoUiThumb = function(e){
@@ -211,8 +211,8 @@
           '<span class="spud_admin_photo_progress_filename">'+fileName+'</span>: ',
           '<span class="spud_admin_photo_progress_status">Uploading</span>',
         '</h6>',
-        '<div class="progress progress-striped active">',
-          '<div class="bar" style="width: 0;"></div>',
+        '<div class="progress">',
+          '<div class="progress-bar progress-bar-striped active" style="width: 0;"></div>',
         '</div>',
       '</div>'
     ].join('');
@@ -221,9 +221,9 @@
 
   self.onPhotoUploadProgress = function(e, progressBar){
     var percent = Math.round(e.loaded * 100 / e.total);
-    progressBar.find('.bar').css({width: percent + '%'});
+    progressBar.find('.progress-bar').css({width: percent + '%'});
     if(percent == 100){
-      progressBar.find('.progress').addClass('progress-success');
+      // progressBar.find('.progress').addClass('progress-success');
       progressBar.find('.spud_admin_photo_progress_status').text('Processing');
     }
   };
@@ -233,7 +233,7 @@
     var photo = $.parseJSON(e.target.response);
     if(e.target.status == 200){
       progressBar.find('.spud_admin_photo_progress_status').text('Done!');
-      progressBar.find('.progress').removeClass('progress-striped active');
+      progressBar.find('.progress-bar').removeClass('progress-bar-striped active').addClass('progress-bar-success');
       var element = $('#spud_admin_photo_' + photo.id);
       if(element.length > 0){
         element.replaceWith(photo.html);
@@ -242,7 +242,7 @@
         var target = $('#spud_admin_photos_selected, #spud_admin_photos');
         target.prepend(photo.html).fadeIn(200);
       }
-      hideModalDialog();
+      spud.admin.modal.hide();
     }
     // validation error
     else{
@@ -274,7 +274,7 @@
   };
 
   self.photoUploadFormLoaded = function(html){
-    displayModalDialogWithOptions({
+    spud.admin.modal.displayWithOptions({
       title: 'Upload Photo',
       html: html
     });
@@ -303,7 +303,7 @@
         dupe.remove();
       }
     });
-    displayModalDialogWithOptions({
+    spud.admin.modal.displayWithOptions({
       title: 'My Photo Library',
       html: html,
       buttons:{
@@ -319,7 +319,7 @@
       .prependTo('#spud_admin_photos_selected')
       .hide()
       .fadeIn(200);
-    hideModalDialog();
+    spud.admin.modal.hide();
   };
 
   self.deleteSelectedPhotosFromLibrary = function(e){

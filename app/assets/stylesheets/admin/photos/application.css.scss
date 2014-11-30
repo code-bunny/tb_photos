@@ -1,12 +1,13 @@
 //= require_self
 
+$editor-height: 450px;
+
 // Thumbnails
 //////////////
 .spud_admin_photo_ui_thumbs{
-  height: 300px;
+  height: $editor-height;
   padding: 0;
-  border: 1px solid #cacaca;
-  margin: 15px 0;
+  border: 1px solid #EAEAEA;
   overflow-y: scroll;
 }
 .spud_admin_photo_ui_thumb{
@@ -30,9 +31,9 @@
   -webkit-transition-timing-function: ease-out;
 }
 .spud_admin_photo_ui_thumb_small{
-  width: 100px;
-  height: 100px;
-  background-size: 100px 100px;
+  width: 94px;
+  height: 94px;
+  background-size: 94px 94px;
   margin: 12px;
 }
 .spud_admin_photo_ui_thumb:hover{
@@ -93,6 +94,12 @@
   margin: 0 4px;
 }
 
+// Album Edit
+////////////
+.admin-photo-album-column{
+  margin-bottom: 20px;
+}
+
 // Upload Queue
 //////////////
 .spud_admin_photo_progress{
@@ -102,29 +109,7 @@
   display: none;
   background: white;
   padding: 15px;
-  margin: 0 0 0 10px;
-  width: 250px;
-  height: 270px;
-  float: right;
-  border: 1px solid #cacaca;
+  height: $editor-height;
+  border: 1px solid #EAEAEA;
   overflow-y: scroll;
-}
- 
-// Gallery Form
-//////////////
-.spud_admin_photos_selection_left{
-  width: 520px;
-  margin-right: 18px;
-  float: left;
-}
-.spud_admin_photos_selection_right{
-  width: 400px;
-  float: left;
-}
-.spud_admin_photos_selection_left h4, .spud_admin_photos_selection_right h4{
-  font-weight: normal;
-  margin: 15px 0;
-}
-#spud_admin_photo_gallery_form .spud_admin_photo_ui_thumb_controls{
-  display: none;
 }

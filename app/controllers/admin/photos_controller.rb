@@ -1,6 +1,7 @@
 class Admin::PhotosController < Admin::ApplicationController
 
   include RespondsToParent
+  belongs_to_spud_app :photo_albums
 
   before_filter :get_photo, :only => [:show, :edit, :update, :destroy]
   layout false
