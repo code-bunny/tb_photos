@@ -274,7 +274,7 @@ var photoUploadFormLoaded = function(html){
     title: 'Upload Photo',
     html: html
   });
-  $("#fileUploadSizeLegend").html('File Upload <span class="split-pane-item-meta">max allowed size : '+ spud.admin.photos.max_image_upload_size_humanized +'</span>');
+  $(".admin-photo-form-max-size").text('Maximum upload size: '+ spud.admin.photos.max_image_upload_size_humanized);
 };
 
 /*
