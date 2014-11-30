@@ -46,6 +46,29 @@ var self = spud.admin.photos = {
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
   },
 
+  /* Ajax Callbacks
+  -------------------*/
+  markPhotoAsDeleted: function(photo_id){
+    var photo = $('#admin-photo-' + photo_id);
+    photo.fadeOut(200, function(){
+      photo.remove();
+    });
+  },
+
+  markPhotoAlbumAsDeleted: function(photo_album_id){
+    var photo_album = $('#admin-photo-album-' + photo_album_id);
+    photo_album.fadeOut(200, function(){
+      photo_album.remove();
+    });
+  },
+
+  markPhotoGalleryAsDeleted: function(photo_gallery_id){
+    var photo_gallery = $('#admin-photo-gallery-' + photo_gallery_id);
+    photo_gallery.fadeOut(200, function(){
+      photo_gallery.remove();
+    });
+  },
+
   /* Handle file uploads passed via iframe (legacy support)
   * -------------------------------------------------------- */
   photoLegacyUploadErrors: function(html){
@@ -115,27 +138,6 @@ var selectedPhotoUiThumb = function(e){
   else{
     $(this).addClass('admin-photo-ui-thumb-selected');
   }
-};
-
-var markPhotoAsDeleted = function(photo_id){
-  var photo = $('#admin-photo-' + photo_id);
-  photo.fadeOut(200, function(){
-    photo.remove();
-  });
-};
-
-var markPhotoAlbumAsDeleted = function(photo_album_id){
-  var photo_album = $('#admin-photo-album-' + photo_album_id);
-  photo_album.fadeOut(200, function(){
-    photo_album.remove();
-  });
-};
-
-var markPhotoGalleryAsDeleted = function(photo_gallery_id){
-  var photo_gallery = $('#admin-photo-gallery-' + photo_gallery_id);
-  photo_gallery.fadeOut(200, function(){
-    photo_gallery.remove();
-  });
 };
 
 /*
