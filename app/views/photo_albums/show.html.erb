@@ -13,9 +13,9 @@
     <p><%= link_to 'Back to Albums', photo_albums_path %>
   <% end %>
 
-  <div id="spud_photo_galleries">
+  <div class="photo-galleries">
     <% @photo_album.photos.each do |photo| %>
-      <div class="spud_photo_album_thumbnail">
+      <div class="photo-album-thumbnail">
         <%= link_to image_tag(photo.photo.url(:small), :alt => photo.caption, :title => photo.title), photo.photo.url(:large) %>
       </div>
     <% end %>

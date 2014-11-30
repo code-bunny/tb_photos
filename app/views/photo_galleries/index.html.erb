@@ -7,10 +7,10 @@
 <h2>Photo Galleries</h2>
 
 <% cache(@photo_galleries) do %>
-  <div id="spud_photo_galleries">
+  <div class="photo-galleries">
     <% @photo_galleries.each do |gallery| %>
       <% cache(gallery) do %>
-        <div class="spud_photo_gallery_thumbnail">
+        <div class="photo-gallery-thumbnail">
           <h3><%= link_to gallery.title, photo_gallery_photo_albums_path(gallery.url_name) %></h3>
           <%= image_tag gallery.top_photo_url(:medium), :title => gallery.title %>
         </div>
