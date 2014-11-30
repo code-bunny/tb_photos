@@ -22,7 +22,7 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
   
   def create
     @photo_gallery = SpudPhotoGallery.new(photo_gallery_params)
-    flash[:notice] = 'SpudPhotoGallery created successfully' if @photo_gallery.save
+    flash[:notice] = 'Gallery created successfully' if @photo_gallery.save
     respond_with @photo_gallery, :location => admin_photo_galleries_path
   end
   
@@ -32,12 +32,12 @@ class Admin::PhotoGalleriesController < Admin::ApplicationController
   
   def update
     @photo_gallery.update_attributes(photo_gallery_params)
-    flash[:notice] = 'SpudPhotoGallery updated successfully' if @photo_gallery.save
+    flash[:notice] = 'Gallery updated successfully' if @photo_gallery.save
     respond_with @photo_gallery, :location => admin_photo_galleries_path
   end
   
   def destroy
-    flash[:notice] = 'SpudPhotoGallery deleted successfully' if @photo_gallery.destroy
+    flash.now[:notice] = 'Gallery deleted successfully' if @photo_gallery.destroy
     respond_with @photo_gallery, :location => admin_photo_galleries_path
   end
 

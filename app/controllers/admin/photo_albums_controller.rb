@@ -35,13 +35,13 @@ class Admin::PhotoAlbumsController < Admin::ApplicationController
     @photo_album.update_attributes(photo_album_params)
     if @photo_album.save
       set_photo_order
-      flash[:notice] = 'SpudPhotoAlbum updated successfully' 
+      flash[:notice] = 'Album updated successfully' 
     end
     respond_with @photo_album, :location => admin_photo_albums_path
   end
 
   def destroy
-    flash[:notice] = 'SpudPhotoAlbum deleted successfully' if @photo_album.destroy
+    flash.now[:notice] = 'Album deleted successfully' if @photo_album.destroy
     respond_with @photo_album, :location => admin_photo_albums_path
   end
 
