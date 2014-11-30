@@ -4,7 +4,7 @@
     <%= hidden_field_tag 'spud_photo_gallery[album_ids][]', album.id %>
   </div>
   <div class="admin-photo-ui-thumb-controls">
-    <%= link_to 'Edit', edit_admin_photo_album_path(album), :class => 'admin-photos-btn-edit' %>
-    <%= link_to 'Delete', admin_photo_album_path(album), :method => :delete, :class => 'admin-photos-btn-delete', :remote => true, :data => {:confirm => 'Are you sure?'} %>
+    <%= link_to '', edit_admin_photo_album_path(album), :class => 'admin-photos-btn-edit' %>
+    <%= link_to '', admin_photo_album_path(album), :method => :delete, :class => 'admin-photos-btn-delete', :remote => true, :data => {:confirm => 'Are you sure?'} %>
   </div>
 </div>

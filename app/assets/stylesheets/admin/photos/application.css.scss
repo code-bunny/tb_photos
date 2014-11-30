@@ -77,21 +77,28 @@ $editor-height: 450px;
   background: rgba(0,0,0,0.5);
   border-bottom-right-radius: 15px;
 }
-.admin-photos-btn-remove, .admin-photos-btn-delete{
-  background: image-url('admin/photos/buttons/x_16x16.png');
+.admin-photos-btn-edit, .admin-photos-btn-remove, .admin-photos-btn-delete{
+  color: white;
+  position: relative;
+  top: 1px;
+  margin: 0 2px;
   height: 16px;
   width: 16px;
-  text-indent: -7777px;
   display: inline-block;
-  margin: 0 4px;
+  font: normal 16px/16px 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
+  &:hover{
+    color: white;
+    text-decoration: none;
+  }
 }
-.admin-photos-btn-edit{
-  background: image-url('admin/photos/buttons/cog_16x16.png');
-  height: 16px;
-  width: 16px;
-  text-indent: -7777px;
-  display: inline-block;
-  margin: 0 4px;
+.admin-photos-btn-edit:before{
+  content: "\e019";
+}
+.admin-photos-btn-remove, .admin-photos-btn-delete{
+  &:before{
+    content: "\e014";
+  }
 }
 
 // Album Edit
