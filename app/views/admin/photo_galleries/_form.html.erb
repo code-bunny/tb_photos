@@ -17,13 +17,13 @@
       <div class="col-md-8 admin-photo-album-column">
         <h4>Selected:</h4>
         <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
-          <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums %>
+          <%= render :partial => 'album', :collection => @photo_gallery.albums %>
         </div>
       </div>
       <div class="col-md-4 admin-photo-album-column">
         <h4>Available:</h4>
-        <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable">
-          <%= render :partial => '/admin/photo_albums/album', :collection => @photo_gallery.albums_available %>
+        <div class="admin-photo-ui-thumbs admin-photo-ui-thumbs-sortable admin-photo-albums-available">
+          <%= render :partial => 'album', :collection => @photo_gallery.albums_available %>
         </div>
       </div>
     </div>

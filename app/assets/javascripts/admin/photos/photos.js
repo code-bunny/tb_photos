@@ -17,6 +17,7 @@ var self = spud.admin.photos = {
     $('body').on('click', '#admin-photo-album-action-upload, .admin-photo .admin-photos-btn-edit', clickedPhotoAddOrEdit);
     $('body').on('click', '.admin-photo-library-add-selected', addSelectedPhotosFromLibrary);
     $('body').on('click', '.admin-photo-library-delete-selected', deleteSelectedPhotosFromLibrary);
+    $('#admin-photo-gallery-form').on('click', '.admin-photos-btn-delete', clickedDeleteAlbumFromGallery);
 
     // html5 drag and drop file
     if(typeof(FormData) != 'undefined' && typeof(XMLHttpRequest) != 'undefined' && (droparea = document.getElementById('admin-photo-upload-queue'))){
@@ -69,7 +70,14 @@ var submittedPhotoAlbumForm = function(e){
 };
 
 var submittedPhotoGalleryForm = function(e){
-  $('#admin-photo-albums-available .admin-photo-ui-thumb').remove();
+  $('.admin-photo-albums-available input').remove();
+};
+
+var clickedDeleteAlbumFromGallery = function(e){
+  e.preventDefault();
+  var thumb = $(this).parents('.admin-photo-ui-thumb');
+  thumb.remove();
+  $('.admin-photo-albums-available').append(thumb);
 };
 
 var clickedPhotoRemoveFromAlbum = function(e){

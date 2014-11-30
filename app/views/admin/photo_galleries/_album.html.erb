@@ -1,0 +1,9 @@
+<div id="admin-photo-album-<%= album.id %>" class="admin-photo-ui-thumb" style="background-image:url('<%= album.top_photo_url(:spud_admin_small) %>')">
+  <h5><%= album.title %></h5>
+  <div style="display:none;">
+    <%= hidden_field_tag 'spud_photo_gallery[album_ids][]', album.id %>
+  </div>
+  <div class="admin-photo-ui-thumb-controls">
+    <%= link_to '', '#', :class => 'admin-photos-btn-delete' %>
+  </div>
+</div>
