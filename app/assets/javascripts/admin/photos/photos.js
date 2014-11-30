@@ -91,8 +91,10 @@ var validatePhoto = function(file) {
       errors.push("Your file size of " + self.getFileSizeHumanized(file.size) + " exceeded the maximum limit of " + spud.admin.photos.max_image_upload_size_humanized);
     }
   }
-  else {
-    errors.push("No file found");
+  else{
+    if($('.admin-photo-form-current-photo').length === 0){
+      errors.push("No file found");  
+    }
   }
   return errors;
 };
@@ -158,11 +160,6 @@ var generateFileUploadErrors = function(errors, opts) {
 };
 
 var submittedPhotoForm = function(e){
-  // disable submit button
-  // not working in updated bootstrap!
-  // var submit = $(this).find('input[type=submit]');
-  // submit.attr('disabled', 'disabled').val(submit.attr('data-loading-text'));
-
   if(html5upload){
     // create a FormData object and attach form values
     var fd = new FormData();
@@ -180,9 +177,14 @@ var submittedPhotoForm = function(e){
       return generateFileUploadErrors(photoValidationErrors);
     }
     
-    progressBar = progressBarForUpload(file.name);
-    fd.append('spud_photo[photo]', file);
-    form.append(progressBar);
+    if(file){
+      progressBar = progressBarForUpload(file.name);
+      fd.append('spud_photo[photo]', file);
+      form.append(progressBar);  
+    }
+    else{
+      progressBar = progressBarForUpload('');
+    }
 
     // send FormData object as ajax request
     var xhr = new XMLHttpRequest();
