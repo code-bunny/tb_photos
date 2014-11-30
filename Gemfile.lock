@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    tb_photos (1.0.5)
+    tb_photos (1.1.0.beta1)
       paperclip
       rails (~> 4.0)
       tb_core (~> 1.2)
@@ -50,7 +50,7 @@ GEM
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.3)
+    cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     codemirror-rails (3.16)
       railties (>= 3.0, < 5)
@@ -74,7 +74,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.8.4)
     mysql2 (0.3.14)
-    paperclip (4.1.1)
+    paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
