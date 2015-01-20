@@ -4,7 +4,7 @@ source "http://rubygems.org"
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 
-gem 'authlogic', :github => 'binarylogic/authlogic', :ref => 'abc09970ed1fad98c6c12f4ca64d1670d37d11db'
+gem 'authlogic'
 gem 'tb_core' #, :path => "../tb_core"
 
 gemspec

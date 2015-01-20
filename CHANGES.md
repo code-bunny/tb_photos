@@ -2,6 +2,10 @@
 
 This log will detail all major releases of TB Core. Minor patch updates may be omitted if they are simple bug fixes. 
 
+# v1.1.0
+
+- Rails 4.2, Bootstrap 3, and TB Core 1.3
+
 # v1.0.4
 
 - Rails 4 and tb_core 1.2 compatibility
